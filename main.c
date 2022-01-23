@@ -6,7 +6,7 @@
 /*   By: devman <devman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 10:04:35 by devman            #+#    #+#             */
-/*   Updated: 2022/01/21 10:25:47 by devman           ###   ########.fr       */
+/*   Updated: 2022/01/23 15:08:20 by devman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		printf("'%s' file couldn't be opened.\n", argv[1]);
+		printf("'%s' file couldn't open.\n", argv[1]);
 		return (1);
 	}
 	for (i = 0, line = get_next_line(fd);
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 			"(leaks return code)\n", system("leaks gnl"));
 #endif
 #ifdef __linux__
-	printf("I don't know what should I do for leaks checking :/\nBut I am sure there ain't any leaks around here [:-)\n");
+	printf("I don't know what should I do for leaks checking :/\nBut I am sure there ain't any leaks around here [:-)\n\n");
 	printf("And here is your gift for using Linux:\n");
 	printf("                 ----------------------\n" \
 "         ___     |  Hello, World!     |\n" \

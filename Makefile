@@ -7,17 +7,11 @@ $(NAME): $(O_FILES)
 .c.o:
 	@gcc -c $<
 
-tester1: $(O_FILES)
-	make -C gnltester2 m
-
-tester2: $(O_FILES)
-	make -C gnltester1
-
 clean:
 	rm -f *.o $(NAME)
 
+# Okunacak dosya adını 'make run file=dosyaadi' şeklinde verebilirsiniz.
 run: $(NAME)
 	./$(NAME) $(file)
 
-
-.PHONY: run tester1 tester2 clean
+.PHONY: run clean

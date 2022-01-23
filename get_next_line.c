@@ -6,7 +6,7 @@
 /*   By: devman <devman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 12:49:27 by mkaramuk          #+#    #+#             */
-/*   Updated: 2022/01/21 10:04:53 by devman           ###   ########.fr       */
+/*   Updated: 2022/01/23 15:09:54 by devman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,22 +39,20 @@ void	ft_strappend(char **data, char *buffer)
 
 void	get_data(int fd, char **backup)
 {
-	char	*buffer;
+	char	buffer[BUFFER_SIZE + 1];
 	int		readed;
 
 	readed = 1;
-	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return ;
 	while (!ft_strchr(*backup, '\n') && readed > 0)
 	{
 		readed = read(fd, buffer, BUFFER_SIZE);
-		buffer[readed] = 0;
 		if (readed <= 0)
 			break ;
+		buffer[readed] = 0;
 		ft_strappend(backup, buffer);
 	}
-	free(buffer);
 }
 
 char	*get_line(char **backup)
@@ -78,8 +76,6 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*ret;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
 	get_data(fd, &buffer);
 	line = get_line(&buffer);
 	if (!line)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkaramuk <mkaramuk@student.42.fr>          +#+  +:+       +#+        */
+/*   By: devman <devman@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 19:32:15 by mkaramuk          #+#    #+#             */
-/*   Updated: 2022/01/20 19:37:49 by mkaramuk         ###   ########.fr       */
+/*   Updated: 2022/01/23 15:09:30 by devman           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,10 @@ char	*ft_strdup(const char *s1)
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ret;
-	size_t	s1len;
-	size_t	s2len;
 	size_t	i;
 
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
 	i = 0;
-	ret = (char *)malloc(sizeof(char) * (s1len + s2len + 1));
+	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ret)
 		return (NULL);
 	while (s1 && *s1)
@@ -76,11 +72,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	start_ptr = (char *)s + start;
 	i = 0;
 	while (i < len && *start_ptr)
-	{
-		ret[i] = *start_ptr;
-		start_ptr++;
-		i++;
-	}
+		ret[i++] = *start_ptr++;
 	ret[i] = '\0';
 	return (ret);
 }
